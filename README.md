@@ -1,0 +1,5 @@
+An exploration on reading modules from precompiled object/library files.  This functionality is being explored in the hopes that D compiler's could use it.  The use case for it when a compiler is using the proposed "compile imports" feature where the compiler will not only compile the modules it was given, but also compile modules that were both imported and don't exist in precompiled library.  Determining whether a module is in a precompiled library is what this code would be used for.  The current implementation of "compile imports" simply checks if a module is well-known (such as the "object" module) or if it falls in the "std"/"core"/"etc" namespaces, with this code it should be able to actually determine what modules are in each precompiled library.
+
+# TODO
+
+* Finithe the "patch" command which modifies an object/library file by injecting a datastructure that allows you to quickly see what D modules are included in the file.  This data structure should be quick to read.  For OMF, I could use a "comment" record for this.  Note that since there is a limit on OMF record length, multiple records should be supported.
